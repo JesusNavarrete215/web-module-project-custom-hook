@@ -1,7 +1,11 @@
-//is dark mode on or off
-//dark mode should return a boolean to know if it is on or off
-//a function to set darkmode on or off
+import useLocalStorage from "./useLocalStorage";
+import { useState } from "react";
 
-const userDarkMode = (isDarkModeOnOrOff) => {
-  const [darkModeStatus, setDarkModeStatus] = useState(false);
+const useDarkMode = (initialValue) => {
+  //composing custom hooks
+  const [value, setValue] = useLocalStorage("darkMode", initialValue);
+  //check the users OS darkMode preference and set the as the initial value
+
+  return [value, setValue];
 };
+export default useDarkMode;
